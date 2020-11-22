@@ -1,0 +1,10 @@
+.main-panel .content {
+  padding: 0 0px 15px;
+}
+.action i {
+  padding: 10px;
+}
+.action {
+  display: flex;
+  justify-content: space-around;
+}

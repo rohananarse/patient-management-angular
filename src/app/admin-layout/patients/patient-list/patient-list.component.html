@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Patient List</h5>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                   First Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th class="text-right">
+                                    Action
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of patientData">
+                                    <td>
+                                        {{data.userName}}
+                                    </td>
+                                    <td>
+                                        {{data.lastName}}
+                                    </td>
+                                    <td>
+                                        {{data.address1}}
+                                    </td>
+                                    <td class="text-center action">
+                                       <!-- <button type="button" (click)="onSelect(data)"class="glyphicon glyphicon-check"></button> -->
+                                       <i class="fa fa-eye" role="button" data-toggle="modal" data-target="#myModal" (click)="onSelect(data)"></i>
+                                       <i class="fa fa-pencil" role="button" (click)="onEdit(data)"></i>
+                                       <i class="fa fa-close"></i>
+                                      
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>fname : {{selectedPatientData.userName}}</p>
+          <p>lname : {{selectedPatientData.lastName}}</p>
+          <p>lname : {{selectedPatientData.address1}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
