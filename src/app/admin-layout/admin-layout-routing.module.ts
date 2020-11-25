@@ -7,7 +7,7 @@ const routes: Routes = [
        { path: '',
         component: AdminLayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
+            { path: '', redirectTo: 'login', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
             {path: 'patients', loadChildren:()=>import('./patients/patients.module').then(m=>m.PatientsModule)}
           ]

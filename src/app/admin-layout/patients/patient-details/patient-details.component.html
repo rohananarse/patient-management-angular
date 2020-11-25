@@ -12,20 +12,32 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Username</label>
-                <input type="text" class="form-control"  formControlName="userName">
+                <input type="text" class="form-control" formControlName="userName">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.userName.touched && addPatient.controls.userName.errors?.required">
+                Please enter username.!
+              </small>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Last Name</label>
                 <input type="text" class="form-control" formControlName="lastName">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.lastName.touched && addPatient.controls.lastName.errors?.required">
+                Please enter last name!
+              </small>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Phone</label>
-                <input type="text" class="form-control"  formControlName="phone">
+                <input type="text" class="form-control" formControlName="phone">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.phone.touched && addPatient.controls.phone.errors?.required">
+                Please enter phone.!
+              </small>
             </div>
           </div>
           <div class="row">
@@ -34,43 +46,67 @@
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" formControlName="email">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.email.touched && addPatient.controls.email.errors?.required">
+                Please enter email address.!
+              </small>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Address Line 1</label>
-                <input type="text" class="form-control"  formControlName="address1">
+                <input type="text" class="form-control" formControlName="address1">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.address1.touched && addPatient.controls.address1.errors?.required">
+                Please enter address.!
+              </small>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Address Line 2</label>
                 <input type="text" class="form-control" formControlName="address2">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.address2.touched && addPatient.controls.address2.errors?.required">
+                Please enter address.!
+              </small>
             </div>
-            
+
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">City</label>
-                <input type="text" class="form-control" formControlName="city" >
+                <input type="text" class="form-control" formControlName="city">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.city.touched && addPatient.controls.city.errors?.required">
+                Please enter city.!
+              </small>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Zip</label>
                 <input type="text" class="form-control" formControlName="zip">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.city.touched && addPatient.controls.zip.errors?.required">
+                Please enter zip.!
+              </small>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Pincode</label>
                 <input type="text" class="form-control" formControlName="pin">
               </div>
+              <small class="form-text text-danger text-muted"
+                *ngIf="addPatient.controls.pin.touched && addPatient.controls.pin.errors?.required">
+                Please pin code!
+              </small>
             </div>
-            
+
           </div>
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" [disabled]="!addPatient.valid">
             Submit
           </button>
         </form>

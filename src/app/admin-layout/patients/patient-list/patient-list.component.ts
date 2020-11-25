@@ -18,7 +18,7 @@ export class PatientListComponent implements OnInit , OnDestroy{
   selectedPatientData={};
   PatientUpdated:Subscription;
 
-  private patientFormdata = new Subject();
+  //private patientFormdata = new Subject();
 
 
   constructor(public patientService : PatientService) { }
@@ -43,12 +43,9 @@ export class PatientListComponent implements OnInit , OnDestroy{
     console.log(this.selectedPatientData)
 }
 
-    onEdit(selectedItem){
-      this.editPatientData = this.patientService.updatePatient(selectedItem)
-    }
+  onEdit(selectedItem){
+    this.patientService.newEvent(selectedItem)
+  }
 
-    getPatientformData() {
-      return this.patientFormdata.asObservable();
-    }
 
 }

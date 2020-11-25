@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from 'app/services/patient.service';
 import { PatientListComponent } from '../patient-list/patient-list.component';
 
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-patient-details',
@@ -15,14 +16,19 @@ export class PatientDetailsComponent implements OnInit{
   submitted=false;
   addPatient:FormGroup;
   message:string;
-x;
+  editmode = false;
+  
   constructor(private formBuilder: FormBuilder, public patientService : PatientService) { }
 
   ngOnInit(): void {
+    
+   // this.editmode= this.uuid !==null;
+    
 
     this.getFormUpdateData();
 
     this.addPatient = this.formBuilder.group({
+      id: [''],
       userName : ['', Validators.required],
       lastName : ['', Validators.required],
       phone : ['', Validators.required],
@@ -38,28 +44,36 @@ x;
     return this.addPatient.controls;
   }
 
-  editForm(){
-    this.addPatient.controls["firstName"].setValue(this.patientData.firstName);
-    this.addPatient.controls["lastName"].setValue(this.patientData.lastName)
-  }
-
-
   getFormUpdateData(){
-  //  this.x = this.patientService.updatePatient(this.addPatient) 
-    console.log(this.x, 'jjjj')
+ 
+    this.patientService.events$.forEach(event => {
+      console.log(event)
+      this.addPatient.controls["id"].setValue(event.id);
+      this.addPatient.controls["userName"].setValue(event.userName);
+      this.addPatient.controls["lastName"].setValue(event.lastName);
+      this.addPatient.controls["phone"].setValue(this.patientData.phone);
+      this.addPatient.controls["email"].setValue(this.patientData.email);
+      this.addPatient.controls["address1"].setValue(this.patientData.address1);
+      this.addPatient.controls["address2"].setValue(this.patientData.address2);
+      this.addPatient.controls["city"].setValue(this.patientData.address2);
+      this.addPatient.controls["zip"].setValue(this.patientData.address2);
+      this.addPatient.controls["pin"].setValue(this.patientData.pin);
+    });
+
   }
-
-
 
   onSubmit(){
     this.submitted = true;
     if(this.addPatient.valid){
+      if(this.addPatient.value.id){
+
+      }
       this.submitted = true;
-       if(this.addPatient.valid){
          this.patientData = this.addPatient.value
-         this.patientService.addPatient(this.patientData);
+         this.patientService.addPatient(this.patientData);    
          this.addPatient.reset()
        }
-     }
     }
+
+   
   }

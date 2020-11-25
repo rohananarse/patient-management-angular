@@ -23,7 +23,9 @@
                                 </th>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let data of patientData">
+                                <tr *ngFor="let data of patientData;index as i" >
+
+                                   
                                     <td>
                                         {{data.userName}}
                                     </td>
@@ -37,7 +39,7 @@
                                        <!-- <button type="button" (click)="onSelect(data)"class="glyphicon glyphicon-check"></button> -->
                                        <i class="fa fa-eye" role="button" data-toggle="modal" data-target="#myModal" (click)="onSelect(data)"></i>
                                        <i class="fa fa-pencil" role="button" (click)="onEdit(data)"></i>
-                                       <i class="fa fa-close"></i>
+                                       <i class="fa fa-close" role="button" (click)="delete(i)"></i>
                                       
                                     </td>
                                 </tr>
